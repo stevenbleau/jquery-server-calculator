@@ -8,6 +8,23 @@ app.use(express.urlencoded());
 
 
 
+//VARIABLES
+let history = [];
+
+
+
+//LOGIC:
+
+//PERFORM CALCULATIONS
+
+
+
+//AJAX OPERATIONS:
+//1. RECEIVE POST INPUT OBJECT AND ADD TO ARRAY
+//2. SEND CALCULATION HISTORY
+
+
+
 
 
 

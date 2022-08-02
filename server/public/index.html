@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="scripts/client.js"></script>
     <script src="vendors/jquery.js"></script>
-    <link rel="stylesheet" href="styles/styel.css">
+    <script src="scripts/client.js"></script>
+    <link rel="stylesheet" href="styles/style.css">
     <title>Server Calculator</title>
 </head>
 <body>
     <h1>Server Side Calculator</h1>
 
     <input id="firstNum"></input>
-    <button id="addBtn">+</button>
-    <button id="minusBtn">-</button>
-    <button id="multiplyBtn">*</button>
-    <button id="divideBtn">/</button>
+    <button class="operatorBtn" id="addBtn" data-operator="+">+</button>
+    <button class="operatorBtn" id="minusBtn" data-operator="-">-</button>
+    <button class="operatorBtn" id="multiplyBtn" data-operator="*">*</button>
+    <button class="operatorBtn" id="divideBtn" data-operator="/">/</button>
     <input id="secondnum"></input>
-    <button id="equalBtn">=</button>
-    <button id="cBtn">C</button>
+    <button class="operatorBtn" id="equalBtn">=</button>
+    <button class="operatorBtn" id="cBtn">C</button>
 
     <h1>ANSWER</h1>
 
