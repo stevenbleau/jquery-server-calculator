@@ -27,6 +27,7 @@ function setOperator(){
 //CLEAR INPUT FIELDS
 function clearInputFields(){
     console.log('in "clearInputFields"');
+    $('.inputFields').val('');
 }
 //APPEND CALCULATION HISTORY TO DOM
 function showHistory(){
