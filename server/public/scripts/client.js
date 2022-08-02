@@ -21,6 +21,8 @@ let operator;
 //STORE OPERATOR USED FOR CALCULATION
 function setOperator(){
     console.log('in "setOperator"');
+    operator = $(this).attr('data-operator');
+        console.log('the operator selected is ', operator);
 }
 //CLEAR INPUT FIELDS
 function clearInputFields(){
