@@ -16,13 +16,43 @@ let history = [];
 //LOGIC:
 
 //PERFORM CALCULATIONS
-
+    function calculate(input){
+        console.log('in "calculate"');
+        if (input.operator === '+'){
+            input.answer = Number(input.inputOne) + Number(input.inputTwo);
+            console.log('The answer is ', input.answer);
+            history.push(input);
+        }
+        else if (input.operator === '-'){
+            input.answer = Number(input.inputOne) - Number(input.inputTwo);
+            console.log('The answer is ', input.answer);
+            history.push(input);
+        }
+        else if (input.operator === '*'){
+            input.answer = Number(input.inputOne) * Number(input.inputTwo);
+            console.log('The answer is ', input.answer);
+            history.push(input);
+        }
+        else if (input.operator === '/'){
+            input.answer = Number(input.inputOne) / Number(input.inputTwo);
+            console.log('The answer is ', input.answer);
+            history.push(input);
+        }
+    }
+    
 
 
 //AJAX OPERATIONS:
-//1. RECEIVE POST INPUT OBJECT AND ADD TO ARRAY
-//2. SEND CALCULATION HISTORY
+    //1. RECEIVE POST INPUT OBJECT AND ADD TO ARRAY
+    app.post('/inputs', (req,res) => {
+        console.log(req.body);
+        calculate(req.body);
 
+    });
+    //2. SEND CALCULATION HISTORY
+    app.get('/history',(req,res)=>{
+        res.send(history);
+    });
 
 
 

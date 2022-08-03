@@ -12,17 +12,13 @@ function readyNow(){
     $('body').on('click', '#cBtn', clearInputFields);
 }
 
-
-
-
-
 //VARIABLES
     let operator;
     let history;
     let calculation = {
         inputOne: 0,
         inputTwo: 0,
-        operator: '+',
+        operator: '',
         answer: 0
 }
 
@@ -41,23 +37,57 @@ function readyNow(){
         $('.inputFields').val('');
     }
     //APPEND CALCULATION HISTORY TO DOM
-    function showHistory(){
+    function showHistory(history){
         console.log('in "showHistory');
         $('#historyList').empty();
-        $('#historyList').append(`
-            <li>${calculation.inputOne} ${calculation.operator} ${calculation.inputTwo} = ${calculation.answer}</li>
-        `);
+        for(let i = 0; i<history.length; i++){
+            $('#historyList').append(`
+                <li>${history[i].inputOne} ${history[i].operator} ${history[i].inputTwo} = ${history[i].answer}</li>
+            `);
+        }
+    
     }
 
 
-    //CREATE OBJECT WITH INPUT, OPERATOR, AND TOTAL PROPERTIES; CALL POST; CLEAR INPUTS; DISPLAY HISTORY
+    //UPDATE CALCULAION OBJECT WITH SUBMISSIONS
     function submit(){
         console.log('in "submit"');
-        showHistory();
+        calculation.inputOne = $('#firstNum').val();
+        calculation.inputTwo = $('#secondNum').val();
+        calculation.operator = operator;
+        //call ajax post
+        postInputs();
+        //call ajax get
+        getHistory();
+        clearInputFields();
     }
 
 
 //AJAX OPERATIONS:
-//1. POST INPUT OBJECT TO SERVER
-//2. GET CALCULATION HISTORY
+    //1. POST INPUT OBJECT TO SERVER
+    function postInputs(){
+        console.log('in "postInputs"');
+        $.ajax({
+            type: 'POST',
+            url: '/inputs',
+            data:
+            {
+                inputOne: calculation.inputOne,
+                inputTwo: calculation.inputTwo,
+                operator: calculation.operator,
+                answer: calculation.answer
+            }
+        });
+    }
+    //2. GET CALCULATION HISTORY
+    function getHistory(){
+        console.log('in "getHistory"');
+        $.ajax({
+            type: 'GET',
+            url: '/history',
+        }).then(function (response) {
+            console.log('the history receieved: ', response);
+            showHistory(response);
+        });
+    }
 
